@@ -45,6 +45,10 @@ const CompanyLogin = () => {
           navigate("/dashboard");
         }
       } catch (error) {
+        if (error.response?.status === 400 && !error.response.data?.success) {
+          setErrorMessage(error.response.data.message);
+      }
+      
         if(error.response?.status === 400){
           navigate("/email-verification", { state: { email: values.email } });
         }

@@ -172,7 +172,7 @@ exports.login = async (req, res) => {
         // Validate password
         const isPasswordValid = await bcrypt.compare(password, company.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ message: 'Invalid credentials.' });
+            return res.status(400).json({ success:false,message: 'Invalid credentials.' });
         }
 
         // Generate JWT token
